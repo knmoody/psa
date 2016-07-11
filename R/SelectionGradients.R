@@ -619,7 +619,7 @@ gradients <- function(w, W = NULL, z, method = c(1,2,3,4, "all"), centered = TRU
     s <- t(cov(w,z))
     
     # phenotypic variance-covariance matrix
-    P <- cov(z)
+    P <- cov(scale(subset(d, w <0.00001, select = c(names(z))))) 
     
     # linear selection gradient - P matrix
     beta_matrix <- solve(P) %*% as.vector(s)
